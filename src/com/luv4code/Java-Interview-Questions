@@ -1,0 +1,424 @@
+=> write a program to perform calculator operations
+=> write a program to find prime numbers between 1 to 100
+
+        int i, j, s=0;
+        for(int i=2;i<100;i++){
+            for(int j=2;j<i;j++){
+                s = 0;
+                if(i%j == 0){
+                    s= 1;
+                    break;
+                }
+            }
+            if(s == 0){
+                System.out.print(i+ " ");
+            }
+        }
+=> write a program to reverse a number without using inbuilt functions and loops?
+
+        public static String reverseString(char[] ch, int length){
+            if(length > 0){
+                System.out.println(ch[length-1]);
+                length--;
+                reverseString(ch,length);
+            }
+        }
+
+        String input = "Hello world";
+        char[] ch = input.toCharArray();
+        int length = ch.length;
+        reverseString(ch,length);
+
+=> how to remove whitespace from string?
+    private static String removeWhiteSpace(String input){
+        char[] ch = input.toCharArray();
+        StringBuffer sb = new StringBuffer();
+        for(int i=0;i<ch.length;i++){
+            if(ch != ' ' && ch != '\t'){
+                sb.append(ch[i]);
+            }
+        }
+
+        return sb.toString();
+    }
+
+=> can a non-static method can access a static variable or static method?
+    yes, it will....
+
+
+=> Java Interviewer Frequently asked questions:
+    1. Tell me something about yourself?
+    2. What is your current project?
+    3. what was role in this project?
+    4. SDLC background like low level design and uml?
+
+
+=> what is public static void main(String[] args){}
+
+        > if main method is not present then jvm throws NoSuchMethodError.
+        > public : it is access modifier, jvm will call anywhere in the application
+        > static : it is also one kind modifier, it will use to call the jvm without creating object.
+        > void : void is a return type, it will not return anything.
+        > main : main is a name of the method which is configured inside a java virtual machine.
+        > String[] args: it is a command line arguments
+
+=> what is armstrong number? write a program to weather given number is armstrong or not?
+        > Armstrong number is a number that is equal to sum of cubes of its digits
+
+            private static int armstrongNumber(int number){
+                int sum =0,a,temp;
+                temp = number;
+
+                while(number > 0){
+                    a = number % 10;
+                    sum = sum + (a*a*a);
+                    number = number / 10;
+                }
+
+                if(temp  == number)
+                    System.out.println("This is a armstrong number");
+                else
+                    System.out.println("This is not a armstrong number");
+
+            }
+
+=> how to find the ip address of any website using java networking api?
+
+    getByName() => method name
+    InetAddress => class
+    java.net    => package
+
+=> can we execute a java program without main method?
+        yes, it is still jdk-6 version then after it will not executed.
+
+        using static block:
+            it is used to initialize static data members
+            this block is executed before main method at the time of classloading.....
+
+
+=> Difference between ClassNotFoundException and NoClassDefFoundError?
+
+=> String interview questions:
+        > What is String?
+        > Is String keyword in java?
+        > how many ways to create string object?
+        > what is the diff b/w immutable and mutable?
+        > why String class is immutable and final?
+        > why StringBuffer and StringBuilder classes are introduced already exists String class?
+        > how many objects will create for the following code
+                String str = "Lucky";
+                String str2= "Lucky";
+
+        > how many ways you can compare strings and which one you prefer?
+            .equals() and "=="
+        > how do you convert string to char array?
+            String str = "Hello";
+            char[] ch = str.toCharArray();
+        > how many objects will be created for the following code?
+            String  str1 = new String("lucky");
+            String str2 = "lucky";
+        > what do you mean by string intern method do?
+            it is used to exact copy of string heap area object to string constant pool
+        > any diff java String and c++ string?
+        > how to call string methods using string literals?
+        > why string constant pool used in java? do you have any idea about it?
+        > what is diff b/w String , StringBuffer and StringBuilder?
+
+        String coding interview questions:
+        -----------------------------
+        > write a logic to count no of words in a string?
+        > write a logic to count the total no of occurrences of a given character in a string?
+        > write a logic to remove duplicate characters in a string?
+        > write a login to reverse each word of a given string?
+        > how can you prove String is a immutable?
+        > how can you find no of words, characters and numbers in the given text file?
+        > how to check if two string are rotations of each other?
+        > how can you check if the given string contains valid parentheses?
+        > write a logic to reverse a string without using loops and string builtin functions?
+        > Write a logic to convert integer to roman string?
+
+        Java Programming questions for developers and testers:
+        --------------------------------------------------------
+        > find a reverse number
+        > find reverse string
+        > check given number is palindrome or not
+        > check given string is palindrome or not
+        > count the no of digits in a number
+        > find the largest of 3 numbers
+        > count sum of digits in a number
+        > check given no is prime or not
+        > fibonacci series
+        > find factorial of given number
+        > sum of elements in array
+        > to find missing number in array
+        > find max and min value in an array
+        > find duplicate elements in array
+        > count the no of occurrences of character in a string
+        > count no of words in a string
+        > reverse each word in a string
+        > swap a number without using third variable
+        > remove whitespace from a string
+        > print even and odd numbers from an array
+
+
+
+Singleton Class:
+==================
+    any java class is allowed to create only single object such type of class is called singleton class.
+    ex: Runtime class, ActionServlet, ServiceLocator
+
+    using : private constructor and factory method
+
+    factory method:
+        Bu using class name if we are calling a method and that returns the same class object such type of method is called factory method
+        EX:
+            Runtime r = Runtime.getRuntime();
+            DateFormat df = DateFormat.getInstance();
+
+        class Test{
+            public static Test t = null;
+            private Test(){
+            }
+
+            public static Test getTest(){
+                if(t == null){
+                    t = new Test();
+                }
+                return t;
+            }
+
+        }
+
+        Three ways to break singleton pattern
+            > Reflection
+            > Cloning
+            > Serialization
+
+
+How to convert String to INT in java?
+    //Integer.parseInt() // it returns the primitive int., static method
+    //Integer.valueOf() // it return the Integer object , it is instance method
+
+
+Find no of vowels in a given string?
+        String input = "hello my name is madhav ponnana";
+        int count = 0;
+        String str = input.toLowerCase();
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i) == 'a' || str.charAt(i) == 'e' ||str.charAt(i) == 'i' || str.charAt(i) == 'o' || str.charAt(i) == 'u'){
+                count++;
+            }
+        }
+        System.out.println(count);
+        }
+
+
+Synchronization Interview Questions?
+    1. what is synchronization
+    2. what is class level lock?
+    3. what is difference b/w synchronization block and method?
+    4. what is daemon thread?
+    5. what is dead lock?
+    6. what is thread priority?
+    7. what is thread scheduler?
+    8. diff b/w notify and notifyAll?
+
+
+
+Diff b/w BufferedReader and Scanner
+    Scanner                                             BufferedReader
+    it parse all the data types apart from string      only read string in java
+    buffer size is 1 kb                                buffer size is 8kb
+    not synchronized                                   it is synchronized
+
+
+Project manager round questions?
+    > what is the project architecture?
+    > what are the roles and responsibilities in the project
+    > what are the technologies you have worked on?
+    > what are the tools are used in the project?
+    > which ide you have used for development?
+    > what are the database's you worked on?
+    > what are the servers/platform's you worked on?
+    > which environment/ os you working on?
+    > how do you manage security like managing your credentials/data encryption?
+    > how do you write unit test cases?
+    > what is your team size?
+    > do you have experience in production support?
+    > have you ever been involved into design?
+    > what are the reporting tools you are used in project?
+    > what is build management tool used in your project?
+    > what is volume of data against which your application runs?
+
+
+Solid Design Principles:
+===============================
+
+        S - Single Responsibility principle
+        O - Open Closed Principle
+        L - Liskov's Substitution Principle
+        I - Interface Segregation Principle
+        D - Dependency Inversion Principle
+
+
+Diff b/w Abstract class and Interface?
+
+
+How to crack Java Interviews:
+==================================
+
+    Junior Developers:
+        Java Fundamentals
+        api
+        Datastructures ( collections)
+        multithreading
+        oops
+    Senior Developers:
+        Jvm Internals
+        Garbage collection tuning
+        design patterns
+    Frameworks:
+        Spring, Spring boot
+        Hibernate
+    Solid Design Principles
+
+
+
+Difference b/w loose coupling and tight coupling?
+
+can you explain about your project architecture?
+
+
+top 10 string coding interview programs?
+-------------------------------------------
+    > how to convert Integer to Romana String ?
+    > how do you check if given string contains valid parenthesis?
+    > how to convert roman numeral string to integer?
+    > how to find first non-repeated character in string?
+    > how to check if two string are rotations of each other?
+    > how to find maximum occurring character in string?
+    > how to print duplicate character in string?
+    > how to remove character from the first string which are present in second string?
+    > how to count the no of words in string?
+    > how to reverse a string?
+
+> how do you ensure that n thread can access n resource without deadlock?
+> can you access a variable in the static context?
+> when will an object finalize method invoke?
+> how to check weather user input is number or not?
+> how to make text file read only in java?
+> how to set file permissions in java?
+
+
+> what is generics?
+    - introduced in jdk 1.5
+    - used for type-safe objects
+    - checked at compile time
+
+
+> What is the disadvantage of immutable class?
+    the only disadvantage of immutable class is that they require a separate object for each distinct value.Creating objects can costly especially if they are large.
+
+> what are the different autowiring types in spring?
+    no
+    byName
+    byType
+    Constructor
+    autodetect
+
+    refer: https://springframework.guru/autowiring-in-spring/
+
+> what is the versioning in rest api?
+> what is diff b/w post and patch?
+
+    patch: submit a partial modification to a resource. if you only need to update one field for the resource, you may want to use the patch method.
+   =======
+> explain microservice architecture?
+> associations in hibernate?
+> what exactly actuator in spring boot?
+> what are the profiles in spring boot?
+> knowledge on jenkins and git
+> knowledge on ci/cd tools?
+> what are the different design patterns you know?
+> explain JWT in spring security?
+> which tool is used for code quality?
+> good knowledge on junit and mockito frameworks.....
+
+
+Spring boot interview questions
+=====================================
+ > What is spring boot?
+ > Why spring boot is used?
+ > what is use @SpringBootApplication annotation and how it works internally?
+ > what are starter dependencies?
+ > what is spring initializer? why should we use?
+ > what is spring actuator? what are advantages?
+ > what is spring boot cli? what are its benefits?
+ > what are some common spring boot applications?
+ > diff b/w @SpringBootApplication and @EnableAutoConfiguration
+ > can we disable the default web server in the spring boot application?
+ > can we override or replace embedded tomcat server in spring boot application?
+ > how to do unit testing and integrating testing in spring boot application?
+ > how to enable debug logging?
+ > how to enable http/ssl support in spring boot?
+ > is this possible to change the port of embedded tomcat server in spring boot?
+ > where do you define spring boot properties?
+
+
+OOPS Interview Questions:
+==========================
+ > what is data hiding?
+ > what is an abstraction?
+ > what is encapsulation?
+ > what is diff b/w encapsulation and abstraction?
+ > what is inheritance?
+ > what is method signature?
+ > what is polymorphism?
+ > what is diff b/w method overloading and method overriding?
+ > diff b/w composition and aggregation, loose coupling and tight coupling,  class and object?
+
+
+Frequently asked core java interview questions
+==================================================
+        > how to prevent a class form being sub classes in java?
+        > can we override static method?
+        > can we access private method?
+        > how to use final keyword?
+        > diff b/w checked and unchecked exceptions?
+        > how to fix concurrentModificationException?
+        > diff b/w abstract class and interface in java8?
+        > when to use abstract class and interface?
+        > diff b/w method overloading and overriding?
+        > have you applied object cloning in the project?
+        > diff b/w HashSet and HashMap
+        > when to use transient variable?
+        > when to use ArrayList and LinkedList?
+        > diff b/w StringBuffer and StringBuilder
+        > how to create custom exception?
+        > when we should go for join()
+        > types of exceptions you faced in your project?
+        > java 8 features?
+        > why we need generics?
+        > collections concepts and real time examples
+        > what is singleton class
+        > diff b/w heap and stack
+        > how to explain project architecture?
+
+> how to reduce execution time of java program?
+        - avoid creating unnecessary objects and prefer lazy initialization
+        - try to use standard library instead of writing your own from scratch.
+        - wherever possible try to use primitive types instead of wrapper classes
+        - Use strings carefully
+        - algorithms implementation
+        - always return empty collection /array instead of null
+        - always try to minimize mutability of a class
+
+
+
+>Microservice interview questions:
+-----------------------------------
+        > what exactly monolithic architecture
+        > what is microservice architecture?
+        > advantages and disadvantages of microservices?
+        > 
+
